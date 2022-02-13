@@ -40,3 +40,26 @@ sudo grub2-set-default 0
 ```
 packer build centos.json
 ```
+После завершения установки в дирректории появилась сборка ```centos-7.7.1908-kernel-5-x86_64-Minimal.box``` (Имя *1908* надо было тоже поменять на *7.9.2009*, забыл)
+
+## vagrant init (тестирование)
+
+Проверил работоспособность созданого образа 
+```
+vagrant box add --name centos-7-5 centos-7.7.1908-kernel-5-x86_64-Minimal.box 
+```
+```
+==> box: Box file was not detected as metadata. Adding it directly...
+==> box: Adding box 'centos-7-5' (v0) for provider: 
+    box: Unpacking necessary files from: file:///home/otus/otus_hw/manual_kernel_update/packer/centos-7.7.1908-kernel-5-x86_64-Minimal.box
+==> box: Successfully added box 'centos-7-5' (v0) for 'virtualbox'!
+```
+Проверил наличие образа выполнив:
+```
+vagrant box list
+```
+Увидел что образ добавился в список:
+```
+centos-7-5 (virtualbox, 0)
+
+```
