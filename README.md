@@ -64,7 +64,7 @@ centos-7-5 (virtualbox, 0)
 
 ```
 
-Создав дирректорию ```test/``` и перейдя туда выполнил инициализацию командой:
+Создав директорию ```test/``` и перейдя туда выполнил инициализацию командой:
 ```
 vagrant init centos-7-5
 ```
@@ -76,5 +76,27 @@ vagrant ssh
 
 ```
 Тем самым оказался на гостевой машине. Проверил версию ядра ```uname -r```, ядро:```5.16.5-1.el7.elrepo.x86_64```
+
 Затем удалил образ из хранилища командой:
 ```vagrant box remove centos-7-5```
+
+## Vagrant cloud
+
+Создав учетную запись на VagrantCloud и обновив vagrant до версии 2.2.19 получилось опубликовать созданный образ командой:
+```
+vagrant cloud publish --release denisordkol/centos-7-5 1.0 virtualbox centos-7.7.1908-kernel-5-x86_64-Minimal.box
+```
+Результат выполнения:
+```
+Releasing box...
+Complete! Published denisordkol/centos-7-5
+Box:              denisordkol/centos-7-5
+Description:      
+Private:          yes
+Created:          2022-02-07T19:45:24.136Z
+Updated:          2022-02-07T19:45:24.136Z
+Current Version:  N/A
+Versions:         1.0
+Downloads:        0
+
+```
