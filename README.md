@@ -26,3 +26,17 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 sudo grub2-set-default 0
 ```
 После перезагрузил гостевую машину и выполнил команду ```uname -r```. Вывод:```5.16.4-1.el7.elrepo.x86_64```. Ядро обновилось.
+
+## Packer
+
+Для установки пакера пришлось перелогинить на root.
+Изменил скачаный файл конфигурации ```centos.json```, вписав следующие строки:
+```
+ "iso_url": "https://mirror.yandex.ru/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Minimal-2009.iso",
+ "iso_checksum": "sha256:07b94e6b1a0b0260b94c83d6bb76b26bf7a310dc78d7a9c7432809fb9bc6194a",
+
+```
+Затем запустил сборку командой:
+```
+packer build centos.json
+```
